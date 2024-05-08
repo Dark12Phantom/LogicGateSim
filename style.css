@@ -1,0 +1,26 @@
+body{
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: #f75f92;
+    height: 768px;
+    width: 1800px;
+}
+
+.butt-select{
+    display: flex;
+    justify-content: space-around;
+}
+
+.butt-plug{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 69px;
+}
+
+#butt{
+    width: 50px;
+    height: 20px;
+    background-color: #fbff00;
+}
