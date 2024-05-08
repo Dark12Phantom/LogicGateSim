@@ -1,26 +1,39 @@
-body{
+body {
     box-sizing: border-box;
 }
 
-.container{
+.container {
     background-color: #f75f92;
     height: 768px;
     width: 1800px;
 }
 
-.butt-select{
+.butt-select {
     display: flex;
     justify-content: space-around;
 }
 
-.butt-plug{
+.butt-plug {
     display: flex;
     justify-content: space-evenly;
     gap: 69px;
 }
 
-#butt{
-    width: 50px;
-    height: 20px;
+#butt {
+    margin-top: 20px;
+    width: 90px;
+    height: 50px;
     background-color: #fbff00;
+    border-radius: 30px;
+    text-align: center;
+}
+
+#butt:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+p {
+    align-items: center;
+    cursor: pointer;
 }
