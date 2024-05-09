@@ -10,38 +10,23 @@
 
 <body>
     <div class="container">
-        <div class="butt-select">
-            <div class="butt-input" id="butt">
-                <p>+INPUT</p>
+        <div class="logic-gate">
+            <button class="input-gate" id="addInputBtn">+INPUT</button>
+            <div class="gate-options">
+                <button class="and-gate">AND</button>
+                <button class="or-gate">OR</button>
+                <button class="nand-gate">NAND</button>
+                <button class="not-gate">NOT</button>
+                <button class="nor-gate">NOR</button>
+                <button class="xor-gate">XOR</button>
+                <button class="xnor-gate">XNOR</button>
             </div>
-            <div class="butt-plug">
-                <div class="and" id="butt">
-                    <p>AND</p>
-                </div>
-                <div class="or" id="butt">
-                    <p>OR</p>
-                </div>
-                <div class="nand" id="butt">
-                    <p>NAND</p>
-                </div>
-                <div class="not" id="butt">
-                    <p>NOT</p>
-                </div>
-                <div class="nor" id="butt">
-                    <p>NOR</p>
-                </div>
-                <div class="xor" id="butt">
-                    <p>XOR</p>
-                </div>
-                <div class="xnor" id="butt">
-                    <p>XNOR</p>
-                </div>
-            </div>
-            <div class="butt-output" id="butt">
-                <p>+OUTPUT</p>
-            </div>
+            <button class="output-gate" id="addOutputBtn">+OUTPUT</button>
         </div>
     </div>
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>
