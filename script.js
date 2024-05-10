@@ -2,6 +2,7 @@
 
 let inputNodeCounter = 1;
 const container = document.querySelector('.container');
+let logicGate = document.querySelector('.logic-gate');
 
 
 function addInputNode() {
@@ -21,6 +22,14 @@ function addInputNode() {
     inputNode.style.top = randomTop + 'px';
 
     container.appendChild(inputNode);
+
+    inputNode.addEventListener('click', function() {
+        if (this.classList.contains('active')) {
+            this.classList.remove('active');
+        } else {
+            this.classList.add('active');
+        }
+    });
 
     let offsetX, offsetY;
     let isDragging = false;
@@ -58,7 +67,6 @@ function removeInputNode(className) {
 }
 
 document.getElementById('addInputBtn').addEventListener('click', addInputNode);
-
 
 //OUTPUT NODE
 
