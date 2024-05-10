@@ -93,6 +93,9 @@ button:active {
 .input-node h1 {
     margin: 0;
 }
+.input-node.active{
+    background-color: #3cff00;
+}
 
 .plug {
     position: absolute;
