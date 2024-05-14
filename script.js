@@ -1,13 +1,17 @@
 //INPUT NODE
 
-let inputNodeCounter = 1;
+let inputNodeCounter = 0;
 const container = document.querySelector('.container');
 let logicGate = document.querySelector('.logic-gate');
 
 
 function addInputNode() {
+    const existingInputNodes = document.querySelectorAll('.input-node');
+    if (existingInputNodes.length >= 4) {
+        return;
+    }
     const inputNode = document.createElement('div');
-    const inputNodeClass = 'inp' + inputNodeCounter;
+    const inputNodeClass = 'inp' + (inputNodeCounter + 1);
     inputNode.classList.add('input-node', inputNodeClass);
     inputNode.draggable = true;
     inputNode.innerHTML = `
@@ -73,6 +77,10 @@ document.getElementById('addInputBtn').addEventListener('click', addInputNode);
 let outputNodeCounter = 1;
 
 function addOutputNode() {
+    const existingOutputNodes = document.querySelectorAll('.output-node');
+    if (existingOutputNodes.length >= 2) {
+        return;
+    }
     const outputNode = document.createElement('div');
     const outputNodeClass = 'out' + outputNodeCounter;
     outputNode.classList.add('output-node', outputNodeClass);
@@ -127,3 +135,82 @@ function removeOutputNode(className) {
 }
 
 document.getElementById('addOutputBtn').addEventListener('click', addOutputNode);
+
+// LOGIC GATES
+// AND Gate
+
+function addAndNode() {
+    if (document.querySelector('.and-node')) {
+        return;
+    }
+
+    const andNode = document.createElement('div');
+    const andNodeClass = 'and-node';
+    andNode.classList.add(andNodeClass);
+    andNode.innerHTML = `
+    <h1>AND</h1>
+    <div class="plug3"></div>
+    <button class="remove-btn" onClick="removeAndNode('${andNodeClass}')">×</button>`;
+
+    const containerRect = container.getBoundingClientRect();
+    const randomTop = Math.random() * (containerRect.height - andNode.offsetHeight);
+    andNode.style.left = '800px';
+    andNode.style.top = '350px';
+
+    container.appendChild(andNode);
+
+    let offsetX, offsetY;
+    let isDragging = false;
+
+    function dragStart(event) {
+        isDragging = true;
+        offsetX = event.clientX - andNode.getBoundingClientRect().left;
+        offsetY = event.clientY - andNode.getBoundingClientRect().top;
+    }
+
+    function dragEnd() {
+        isDragging = false;
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+        if (isDragging) {
+            andNode.style.left = (event.clientX - offsetX) + 'px';
+            andNode.style.top = (event.clientY - offsetY) + 'px';
+        }
+    }
+    andNode.addEventListener('dragstart', dragStart);
+    andNode.addEventListener('dragend', dragEnd);
+    document.addEventListener('dragover', dragOver);
+}
+
+function removeAndNode(className) {
+    const nodeToRemove = document.querySelector('.' + className);
+    if (nodeToRemove) {
+        nodeToRemove.remove();
+    }
+}
+
+document.getElementById('addAndNode').addEventListener('click', addAndNode);
+
+// OR Gate
+
+
+
+// NAND Gate
+
+
+
+// NOT Gate
+
+
+
+// NOR Gate
+
+
+
+// XOR Gate
+
+
+
+// XNOR Gate
