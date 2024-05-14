@@ -143,3 +143,30 @@ button:active {
     top: 50%;
     transform: translateY(-50%);
 }
+
+.and-node {
+    text-align: center;
+    border-radius: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.and-node h1 {
+    margin: 0;
+}
+
+.plug3 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #ff0202;
+    border-radius: 50%;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
