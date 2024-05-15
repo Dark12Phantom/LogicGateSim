@@ -78,7 +78,7 @@ button:active {
 }
 
 
-.input-node {
+.input-node, .output-node {
     text-align: center;
     border-radius: 20px;
     width: 200px;
@@ -90,19 +90,27 @@ button:active {
     align-items: center;
 }
 
-.input-node h1 {
+.input-node h1, .output-node h1 {
     margin: 0;
 }
-.input-node.active{
+
+.input-node.active {
     background-color: #3cff00;
 }
 
-.plug {
-    position: absolute;
+.plug, 
+.plug2,
+.plug3,
+.plug4,
+.plug5 {
     width: 20px;
     height: 20px;
-    background-color: #ff0202;
     border-radius: 50%;
+    position: absolute;
+    background-color: #ff0202;
+}
+
+.plug {
     right: -10px;
     top: 50%;
     transform: translateY(-50%);
@@ -117,29 +125,29 @@ button:active {
     left: -20px;
 }
 
-.output-node {
-    text-align: center;
-    border-radius: 20px;
-    width: 200px;
-    height: 100px;
-    background-color: #fff;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.output-node h1 {
-    margin: 0;
-}
-
 .plug2 {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ff0202;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.plug3 {
     border-radius: 50%;
     left: -10px;
+    top: 25%;
+    transform: translateY(-50%);
+}
+
+.plug4 {
+    border-radius: 50%;
+    left: -10px;
+    top: 70%;
+    transform: translateY(-50%);
+}
+
+.plug5 {
+    border-radius: 50%;
+    right: -10px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -160,7 +168,7 @@ button:active {
     margin: 0;
 }
 
-.or-node{
+.or-node {
     text-align: center;
     border-radius: 20px;
     width: 200px;
@@ -171,7 +179,8 @@ button:active {
     justify-content: center;
     align-items: center;
 }
-.or-node h1{
+
+.or-node h1 {
     margin: 0;
 }
 
@@ -187,7 +196,7 @@ button:active {
     align-items: center;
 }
 
-.nand-node h1{
+.nand-node h1 {
     margin: 0;
 }
 
@@ -203,9 +212,10 @@ button:active {
     align-items: center;
 }
 
-.not-node h1{
+.not-node h1 {
     margin: 0;
 }
+
 .nor-node {
     text-align: center;
     border-radius: 20px;
@@ -218,37 +228,39 @@ button:active {
     align-items: center;
 }
 
-.nor-node h1{
+.nor-node h1 {
     margin: 0;
 }
 
-.plug3 {
+.xor-node {
+    text-align: center;
+    border-radius: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ff0202;
-    border-radius: 50%;
-    left: -10px;
-    top: 25%;
-    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.plug4 {
+
+.xor-node h1 {
+    margin: 0;
+}
+
+.xnor-node {
+    text-align: center;
+    border-radius: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ff0202;
-    border-radius: 50%;
-    left: -10px;
-    top: 70%;
-    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.plug5 {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ff0202;
-    border-radius: 50%;
-    right: -10px;
-    top: 50%;
-    transform: translateY(-50%);
+
+.xnor-node h1 {
+    margin: 0;
 }
+
