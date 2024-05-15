@@ -17,7 +17,7 @@ function addInputNode() {
     inputNode.innerHTML = `
         <h1>INPUT</h1>
         <div class="plug"></div>
-        <button class="remove-btn" onclick="removeInputNode('${inputNodeClass}')">×</button>
+        <button class="remove-btn" onclick="removeGateNode('${inputNodeClass}')">×</button>
     `;
 
     const containerRect = container.getBoundingClientRect();
@@ -63,14 +63,6 @@ function addInputNode() {
     inputNodeCounter++;
 }
 
-function removeInputNode(className) {
-    const nodeToRemove = document.querySelector('.' + className);
-    if (nodeToRemove) {
-        nodeToRemove.remove();
-    }
-}
-
-document.getElementById('addInputBtn').addEventListener('click', addInputNode);
 
 //OUTPUT NODE
 
@@ -88,7 +80,7 @@ function addOutputNode() {
     outputNode.innerHTML = `
         <h1>OUTPUT</h1>
         <div class="plug2"></div>
-        <button class="remove-btn" onclick="removeOutputNode('${outputNodeClass}')">×</button>
+        <button class="remove-btn" onclick="removeGateNode('${outputNodeClass}')">×</button>
     `;
 
     const containerRect = container.getBoundingClientRect();
@@ -127,14 +119,6 @@ function addOutputNode() {
     outputNodeCounter++;
 }
 
-function removeOutputNode(className) {
-    const nodeToRemove = document.querySelector('.' + className);
-    if (nodeToRemove) {
-        nodeToRemove.remove();
-    }
-}
-
-document.getElementById('addOutputBtn').addEventListener('click', addOutputNode);
 
 // LOGIC GATES
 // AND Gate
@@ -152,7 +136,7 @@ function addAndNode() {
     <div class="plug3"></div>
     <div class="plug4"></div>
     <div class="plug5"></div>
-    <button class="remove-btn" onClick="removeAndNode('${andNodeClass}')">×</button>`;
+    <button class="remove-btn" onClick="removeGateNode('${andNodeClass}')">×</button>`;
 
     const containerRect = container.getBoundingClientRect();
     const randomTop = Math.random() * (containerRect.height - andNode.offsetHeight);
@@ -186,38 +170,30 @@ function addAndNode() {
     document.addEventListener('dragover', dragOver);
 }
 
-function removeAndNode(className) {
-    const nodeToRemove = document.querySelector('.' + className);
-    if (nodeToRemove) {
-        nodeToRemove.remove();
-    }
-}
-
-document.getElementById('addAndNode').addEventListener('click', addAndNode);
 
 // OR Gate
 
-function addOrNode() { //Change
-    if (document.querySelector('.or-node')) { //Change
+function addOrNode() { 
+    if (document.querySelector('.or-node')) { 
         return;
     }
 
-    const orNode = document.createElement('div'); //Change
-    const orNodeClass = 'or-node'; //Change
-    orNode.classList.add(orNodeClass); //Change
+    const orNode = document.createElement('div'); 
+    const orNodeClass = 'or-node'; 
+    orNode.classList.add(orNodeClass); 
     orNode.innerHTML = `
     <h1>OR</h1>
     <div class="plug3"></div>
     <div class="plug4"></div>
     <div class="plug5"></div>
-    <button class="remove-btn" onClick="removeOrNode('${orNodeClass}')">×</button>`; //Change
+    <button class="remove-btn" onClick="removeGateNode('${orNodeClass}')">×</button>`; 
 
     const containerRect = container.getBoundingClientRect();
-    const randomTop = Math.random() * (containerRect.height - orNode.offsetHeight); //Change
-    orNode.style.left = '800px'; //Change
-    orNode.style.top = '350px'; //Change
+    const randomTop = Math.random() * (containerRect.height - orNode.offsetHeight); 
+    orNode.style.left = '800px'; 
+    orNode.style.top = '350px'; 
 
-    container.appendChild(orNode); //Change
+    container.appendChild(orNode); 
 
     let offsetX, offsetY;
     let isDragging = false;
@@ -235,48 +211,40 @@ function addOrNode() { //Change
     function dragOver(event) {
         event.preventDefault();
         if (isDragging) {
-            orNode.style.left = (event.clientX - offsetX) + 'px'; //Change
-            orNode.style.top = (event.clientY - offsetY) + 'px'; //Change
+            orNode.style.left = (event.clientX - offsetX) + 'px'; 
+            orNode.style.top = (event.clientY - offsetY) + 'px'; 
         }
     }
-    orNode.addEventListener('dragstart', dragStart); //Change
-    orNode.addEventListener('dragend', dragEnd); //Change
+    orNode.addEventListener('dragstart', dragStart); 
+    orNode.addEventListener('dragend', dragEnd); 
     document.addEventListener('dragover', dragOver);
 }
 
-function removeOrNode(className) { //Change
-    const nodeToRemove = document.querySelector('.' + className);
-    if (nodeToRemove) {
-        nodeToRemove.remove();
-    }
-}
-
-document.getElementById('addOrNode').addEventListener('click', addOrNode); //Change
 
 
 // NAND Gate
 
-function addNandNode() { //Change
-    if (document.querySelector('.nand-node')) { //Change
+function addNandNode() { 
+    if (document.querySelector('.nand-node')) { 
         return;
     }
 
-    const nandNode = document.createElement('div'); //Change
-    const nandNodeClass = 'nand-node'; //Change
-    nandNode.classList.add(nandNodeClass); //Change
+    const nandNode = document.createElement('div'); 
+    const nandNodeClass = 'nand-node'; 
+    nandNode.classList.add(nandNodeClass); 
     nandNode.innerHTML = `
     <h1>NAND</h1>
     <div class="plug3"></div>
     <div class="plug4"></div>
     <div class="plug5"></div>
-    <button class="remove-btn" onClick="removeNandNode('${nandNodeClass}')">×</button>`; //Change
+    <button class="remove-btn" onClick="removeGateNode('${nandNodeClass}')">×</button>`; 
 
     const containerRect = container.getBoundingClientRect();
-    const randomTop = Math.random() * (containerRect.height - nandNode.offsetHeight); //Change
-    nandNode.style.left = '800px'; //Change
-    nandNode.style.top = '350px'; //Change
+    const randomTop = Math.random() * (containerRect.height - nandNode.offsetHeight); 
+    nandNode.style.left = '800px'; 
+    nandNode.style.top = '350px'; 
 
-    container.appendChild(nandNode); //Change
+    container.appendChild(nandNode); 
 
     let offsetX, offsetY;
     let isDragging = false;
@@ -294,47 +262,39 @@ function addNandNode() { //Change
     function dragOver(event) {
         event.preventDefault();
         if (isDragging) {
-            nandNode.style.left = (event.clientX - offsetX) + 'px'; //Change
-            nandNode.style.top = (event.clientY - offsetY) + 'px'; //Change
+            nandNode.style.left = (event.clientX - offsetX) + 'px'; 
+            nandNode.style.top = (event.clientY - offsetY) + 'px'; 
         }
     }
-    nandNode.addEventListener('dragstart', dragStart); //Change
-    nandNode.addEventListener('dragend', dragEnd); //Change
+    nandNode.addEventListener('dragstart', dragStart); 
+    nandNode.addEventListener('dragend', dragEnd); 
     document.addEventListener('dragover', dragOver);
 }
 
-function removeNandNode(className) { //Change
-    const nodeToRemove = document.querySelector('.' + className);
-    if (nodeToRemove) {
-        nodeToRemove.remove();
-    }
-}
-
-document.getElementById('addNandNode').addEventListener('click', addNandNode); //Change
 
 
 // NOT Gate
 
-function addNotNode() { //Change
-    if (document.querySelector('.not-node')) { //Change
+function addNotNode() { 
+    if (document.querySelector('.not-node')) { 
         return;
     }
 
-    const notNode = document.createElement('div'); //Change
-    const notNodeClass = 'not-node'; //Change
-    notNode.classList.add(notNodeClass); //Change
+    const notNode = document.createElement('div'); 
+    const notNodeClass = 'not-node'; 
+    notNode.classList.add(notNodeClass); 
     notNode.innerHTML = `
     <h1>NOT</h1>
     <div class="plug"></div>
     <div class="plug2"></div>
-    <button class="remove-btn" onClick="removeNotNode('${notNodeClass}')">×</button>`; //Change
+    <button class="remove-btn" onClick="removeGateNode('${notNodeClass}')">×</button>`; 
 
     const containerRect = container.getBoundingClientRect();
-    const randomTop = Math.random() * (containerRect.height - notNode.offsetHeight); //Change
-    notNode.style.left = '800px'; //Change
-    notNode.style.top = '350px'; //Change
+    const randomTop = Math.random() * (containerRect.height - notNode.offsetHeight); 
+    notNode.style.left = '800px'; 
+    notNode.style.top = '350px'; 
 
-    container.appendChild(notNode); //Change
+    container.appendChild(notNode); 
 
     let offsetX, offsetY;
     let isDragging = false;
@@ -352,47 +312,39 @@ function addNotNode() { //Change
     function dragOver(event) {
         event.preventDefault();
         if (isDragging) {
-            notNode.style.left = (event.clientX - offsetX) + 'px'; //Change
-            notNode.style.top = (event.clientY - offsetY) + 'px'; //Change
+            notNode.style.left = (event.clientX - offsetX) + 'px'; 
+            notNode.style.top = (event.clientY - offsetY) + 'px'; 
         }
     }
-    notNode.addEventListener('dragstart', dragStart); //Change
-    notNode.addEventListener('dragend', dragEnd); //Change
+    notNode.addEventListener('dragstart', dragStart); 
+    notNode.addEventListener('dragend', dragEnd); 
     document.addEventListener('dragover', dragOver);
 }
-
-function removeNotNode(className) { //Change
-    const nodeToRemove = document.querySelector('.' + className);
-    if (nodeToRemove) {
-        nodeToRemove.remove();
-    }
-}
-
-document.getElementById('addNotNode').addEventListener('click', addNotNode); //Change
+ 
 
 // NOR Gate
 
-function addNorNode() { //Change
-    if (document.querySelector('.nor-node')) { //Change
+function addNorNode() { 
+    if (document.querySelector('.nor-node')) { 
         return;
     }
 
-    const norNode = document.createElement('div'); //Change
-    const norNodeClass = 'nor-node'; //Change
-    norNode.classList.add(norNodeClass); //Change
+    const norNode = document.createElement('div'); 
+    const norNodeClass = 'nor-node'; 
+    norNode.classList.add(norNodeClass); 
     norNode.innerHTML = `
     <h1>NOR</h1>
     <div class="plug3"></div>
     <div class="plug4"></div>
     <div class="plug5"></div>
-    <button class="remove-btn" onClick="removeNorNode('${norNodeClass}')">×</button>`; //Change
+    <button class="remove-btn" onClick="removeGateNode('${norNodeClass}')">×</button>`; 
 
     const containerRect = container.getBoundingClientRect();
-    const randomTop = Math.random() * (containerRect.height - norNode.offsetHeight); //Change
-    norNode.style.left = '800px'; //Change
-    norNode.style.top = '350px'; //Change
+    const randomTop = Math.random() * (containerRect.height - norNode.offsetHeight); 
+    norNode.style.left = '800px'; 
+    norNode.style.top = '350px'; 
 
-    container.appendChild(norNode); //Change
+    container.appendChild(norNode); 
 
     let offsetX, offsetY;
     let isDragging = false;
@@ -410,26 +362,128 @@ function addNorNode() { //Change
     function dragOver(event) {
         event.preventDefault();
         if (isDragging) {
-            norNode.style.left = (event.clientX - offsetX) + 'px'; //Change
-            norNode.style.top = (event.clientY - offsetY) + 'px'; //Change
+            norNode.style.left = (event.clientX - offsetX) + 'px'; 
+            norNode.style.top = (event.clientY - offsetY) + 'px'; 
         }
     }
-    norNode.addEventListener('dragstart', dragStart); //Change
-    norNode.addEventListener('dragend', dragEnd); //Change
+    norNode.addEventListener('dragstart', dragStart); 
+    norNode.addEventListener('dragend', dragEnd); 
     document.addEventListener('dragover', dragOver);
 }
 
-function removeNorNode(className) { //Change
+
+// XOR Gate
+
+function addXorNode() { 
+    if (document.querySelector('.xor-node')) { 
+        return;
+    }
+
+    const xorNode = document.createElement('div'); 
+    const xorNodeClass = 'xor-node'; 
+    xorNode.classList.add(xorNodeClass); 
+    xorNode.innerHTML = `
+    <h1>XOR</h1>
+    <div class="plug3"></div>
+    <div class="plug4"></div>
+    <div class="plug5"></div>
+    <button class="remove-btn" onClick="removeGateNode('${xorNodeClass}')">×</button>`; 
+
+    const containerRect = container.getBoundingClientRect();
+    const randomTop = Math.random() * (containerRect.height - xorNode.offsetHeight); 
+    xorNode.style.left = '800px'; 
+    xorNode.style.top = '350px'; 
+
+    container.appendChild(xorNode); 
+
+    let offsetX, offsetY;
+    let isDragging = false;
+
+    function dragStart(event) {
+        isDragging = true;
+        offsetX = event.clientX - xorNode.getBoundingClientRect().left;
+        offsetY = event.clientY - xorNode.getBoundingClientRect().top;
+    }
+
+    function dragEnd() {
+        isDragging = false;
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+        if (isDragging) {
+            xorNode.style.left = (event.clientX - offsetX) + 'px'; 
+            xorNode.style.top = (event.clientY - offsetY) + 'px'; 
+        }
+    }
+    xorNode.addEventListener('dragstart', dragStart); 
+    xorNode.addEventListener('dragend', dragEnd); 
+    document.addEventListener('dragover', dragOver);
+}
+
+
+// XNOR Gate
+
+function addXnorNode() { 
+    if (document.querySelector('.xnor-node')) { 
+        return;
+    }
+
+    const xnorNode = document.createElement('div'); 
+    const xnorNodeClass = 'xnor-node'; 
+    xnorNode.classList.add(xnorNodeClass); 
+    xnorNode.innerHTML = `
+    <h1>XNOR</h1>
+    <div class="plug3"></div>
+    <div class="plug4"></div>
+    <div class="plug5"></div>
+    <button class="remove-btn" onClick="removeGateNode('${xnorNodeClass}')">×</button>`; 
+
+    const containerRect = container.getBoundingClientRect();
+    const randomTop = Math.random() * (containerRect.height - xnorNode.offsetHeight); 
+    xnorNode.style.left = '800px'; 
+    xnorNode.style.top = '350px'; 
+
+    container.appendChild(xnorNode); 
+
+    let offsetX, offsetY;
+    let isDragging = false;
+
+    function dragStart(event) {
+        isDragging = true;
+        offsetX = event.clientX - xnorNode.getBoundingClientRect().left;
+        offsetY = event.clientY - xnorNode.getBoundingClientRect().top;
+    }
+
+    function dragEnd() {
+        isDragging = false;
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+        if (isDragging) {
+            xnorNode.style.left = (event.clientX - offsetX) + 'px'; 
+            xnorNode.style.top = (event.clientY - offsetY) + 'px'; 
+        }
+    }
+    xnorNode.addEventListener('dragstart', dragStart); 
+    xnorNode.addEventListener('dragend', dragEnd); 
+    document.addEventListener('dragover', dragOver);
+}
+
+function removeGateNode(className) { 
     const nodeToRemove = document.querySelector('.' + className);
     if (nodeToRemove) {
         nodeToRemove.remove();
     }
 }
 
-document.getElementById('addNorNode').addEventListener('click', addNorNode); //Change
-
-// XOR Gate
-
-
-
-// XNOR Gate
+document.getElementById('addInputBtn').addEventListener('click', addInputNode);
+document.getElementById('addOutputBtn').addEventListener('click', addOutputNode);
+document.getElementById('addAndNode').addEventListener('click', addAndNode);
+document.getElementById('addOrNode').addEventListener('click', addOrNode); 
+document.getElementById('addNandNode').addEventListener('click', addNandNode); 
+document.getElementById('addNotNode').addEventListener('click', addNotNode);
+document.getElementById('addNorNode').addEventListener('click', addNorNode); 
+document.getElementById('addXorNode').addEventListener('click', addXorNode); 
+document.getElementById('addXnorNode').addEventListener('click', addXnorNode); 
