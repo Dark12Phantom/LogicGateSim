@@ -99,11 +99,11 @@ button:active {
 
 .plug {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-color: #ff0202;
     border-radius: 50%;
-    right: -15px;
+    right: -10px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -135,11 +135,11 @@ button:active {
 
 .plug2 {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-color: #ff0202;
     border-radius: 50%;
-    left: -15px;
+    left: -10px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -160,13 +160,95 @@ button:active {
     margin: 0;
 }
 
+.or-node{
+    text-align: center;
+    border-radius: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.or-node h1{
+    margin: 0;
+}
+
+.nand-node {
+    text-align: center;
+    border-radius: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nand-node h1{
+    margin: 0;
+}
+
+.not-node {
+    text-align: center;
+    border-radius: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-node h1{
+    margin: 0;
+}
+.nor-node {
+    text-align: center;
+    border-radius: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nor-node h1{
+    margin: 0;
+}
+
 .plug3 {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-color: #ff0202;
     border-radius: 50%;
-    left: -15px;
+    left: -10px;
+    top: 25%;
+    transform: translateY(-50%);
+}
+.plug4 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0202;
+    border-radius: 50%;
+    left: -10px;
+    top: 70%;
+    transform: translateY(-50%);
+}
+.plug5 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0202;
+    border-radius: 50%;
+    right: -10px;
     top: 50%;
     transform: translateY(-50%);
 }
