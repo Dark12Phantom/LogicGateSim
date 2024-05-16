@@ -10,6 +10,11 @@ body {
     width: 1800px;
 }
 
+.connector-line {
+    stroke: black;
+    stroke-width: 2;
+}
+
 button {
     margin-top: 30px;
     text-decoration: none;
@@ -110,27 +115,27 @@ button:active {
 }
 
 .plug-middle-right {
-    right: -10px;
+    right: -20px;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .plug-middle-left {
-    left: -10px;
+    left: -20px;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .plug-top-left {
     border-radius: 50%;
-    left: -10px;
+    left: -20px;
     top: 25%;
     transform: translateY(-50%);
 }
 
 .plug-bottom-left {
     border-radius: 50%;
-    left: -10px;
+    left: -20px;
     top: 70%;
     transform: translateY(-50%);
 }
