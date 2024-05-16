@@ -25,7 +25,9 @@ function addNode(type, title, baseClass, specificClass, position, isRight = fals
     node.style.top = randomTop + 'px';
 
     container.appendChild(node);
+
     addDragFunctionality(node);
+    addConnectionFunctionality(node);
 
     if (type === 'input') {
         node.addEventListener('click', function () {
@@ -36,7 +38,64 @@ function addNode(type, title, baseClass, specificClass, position, isRight = fals
             }
         });
     }
+
+    return node;
 }
+
+function addConnectionFunctionality(node) {
+    const plug = node.querySelectorAll('.plug');
+
+    plug.addEventListener('mousedown', function (event) {
+        event.stopPropagation(); // Prevent dragging the node when clicking the plug
+        const plugRect = plug.getBoundingClientRect();
+
+        const startX = plugRect.right;
+        const startY = plugRect.top + plugRect.height / 2;
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.classList.add('connector');
+        svg.style.position = 'absolute';
+        svg.style.width = '100vw';
+        svg.style.height = '100vh';
+        svg.style.top = 0;
+        svg.style.left = 0;
+
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', startX);
+        line.setAttribute('y1', startY);
+        line.setAttribute('x2', startX);
+        line.setAttribute('y2', startY);
+        line.setAttribute('stroke', '#000');
+
+        svg.appendChild(line);
+        document.body.appendChild(svg);
+
+        function move(event) {
+            line.setAttribute('x2', event.clientX);
+            line.setAttribute('y2', event.clientY);
+            if (isConnectionAllowed(event.clientX, event.clientY)) {
+                line.setAttribute('stroke', '#000');
+                isConnectionEstablished = true;
+            } else {
+                line.setAttribute('stroke', 'red');
+                isConnectionEstablished = false;
+            }
+        }
+        
+
+        function stop(event) {
+            document.removeEventListener('mousemove', move);
+            document.removeEventListener('mouseup', stop);
+            if (!isConnectionEstablished) {
+                svg.remove();
+            }
+        }
+
+        document.addEventListener('mousemove', move);
+        document.addEventListener('mouseup', stop);
+    });
+}
+
 
 
 //LOGIC GATES
@@ -71,7 +130,80 @@ function addLogicGateNode(title, className) {
     node.style.top = '350px';
 
     container.appendChild(node);
+
     addDragFunctionality(node);
+    
+    const plugs = node.querySelectorAll('.plug');
+    plugs.forEach(plug => {
+        plug.addEventListener('mousedown', function (event) {
+            event.stopPropagation(); // Prevent dragging the node when clicking the plug
+
+            const plugRect = plug.getBoundingClientRect();
+            const startX = plugRect.right;
+            const startY = plugRect.top + plugRect.height / 2;
+
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.classList.add('connector');
+            svg.style.position = 'absolute';
+            svg.style.width = '100vw';
+            svg.style.height = '100vh';
+            svg.style.top = 0;
+            svg.style.left = 0;
+
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', startX);
+            line.setAttribute('y1', startY);
+            line.setAttribute('x2', startX);
+            line.setAttribute('y2', startY);
+            line.setAttribute('stroke', '#000');
+
+            svg.appendChild(line);
+            document.body.appendChild(svg);
+
+            function move(event) {
+                line.setAttribute('x2', event.clientX);
+                line.setAttribute('y2', event.clientY);
+                if (isConnectionAllowed(event.clientX, event.clientY)) {
+                    line.setAttribute('stroke', '#000');
+                    isConnectionEstablished = true;
+                } else {
+                    line.setAttribute('stroke', 'red');
+                    isConnectionEstablished = false;
+                }
+            }
+            
+
+            function stop(event) {
+                document.removeEventListener('mousemove', move);
+                document.removeEventListener('mouseup', stop);
+                if (!isConnectionEstablished) {
+                    svg.remove();
+                }
+            }
+            
+
+            document.addEventListener('mousemove', move);
+            document.addEventListener('mouseup', stop);
+        });
+    });
+
+    return node;
+}
+
+function isConnectionAllowed(x, y) {
+    const plugs = document.querySelectorAll('.plug');
+    for (const plug of plugs) {
+        const plugRect = plug.getBoundingClientRect();
+        if (
+            x >= plugRect.left &&
+            x <= plugRect.right &&
+            y >= plugRect.top &&
+            y <= plugRect.bottom
+        ) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function addDragFunctionality(node) {
